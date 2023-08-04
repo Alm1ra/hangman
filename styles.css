@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+body {
+    font-family: 'Montserrat', sans-serif !important;
+    margin: 0;
+    background: url('img/background.jpg');
+}
+
+h1 {
+    color: #14A76C;
+    font-size: 5rem;
+    text-align: center;
+}
+
+#game-container {
+    display: flex;
+    justify-content: center;
+}
+
+#reset {
+    width: 15rem;
+    margin-bottom: 1.5rem;
+    font: inherit;
+    font-weight: bolder;
+    font-size: 1.7rem;
+    padding: 0.85rem 1.85rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px 4px 4px 4px;
+    transition: all 0.2s ease-out;
+    background-color: #747474;
+}
+
+#reset:hover {
+    background-color: #FF652F;
+}
+
+#container {
+    overflow: hidden;
+    justify-content: center;
+    margin-right: 4rem;
+}
+
+#letters {
+    width: 15rem;
+    height: 24.4rem;
+    border: 2.5px solid;
+    border-color: #FFE400;
+    color: #FFE400;
+    background-color: #232323;
+    text-align: center;
+}
+
+#letters h2 {
+    margin: 0;
+    padding-top: 4.2rem;
+    margin-bottom: 1.5rem;
+}
+
+#grid-container button {
+    font-size: 1.5rem;
+    font-weight: bold;
+    width: 2.5rem;
+    height: 2.5rem;
+    color: #747474;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  #grid-container button:hover {
+    color: #FFE400;
+  }
+
+#hangman {
+    width: 35rem;
+    height: 30rem;
+    background-color: #282828;
+    border: 2.5px solid;
+    border-color: #FF652F;
+}
+
+#word {
+    margin-top: 3rem;
+    justify-content: center;
+    text-align: center;
+}
+
+#word h2 {
+    font-size: 5rem;
+    color: #747474;
+    display: inline;
+    padding: 1rem;
+}
