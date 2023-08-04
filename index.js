@@ -1,11 +1,17 @@
 const url = 'https://random-word-api.herokuapp.com/word?lang=en';
 let currWord = '';
+let disWord = '';
 window.onload = function() {
     letterGrid();
 }
 
+function replaceCharacter(str,index,chr) {
+    if(index > str.length-1) return str;
+    return str.substring(0,index) + chr + str.substring(index+1);
+}
+
 function letterGrid() {
-    alphabet = 'abcdefghijklmnopqrstuvwxyz'.toUpperCase().split('');
+    alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
     const letters = document.getElementById('grid-container');
 
     for(i of alphabet) {
@@ -17,15 +23,20 @@ function letterGrid() {
 }
 
 function makeWord(data) {
-    let lettersNum = data.length;
+    let lettersNum = '_';
+    
+    for (let i = 1; i < data.length; i++) {
+        lettersNum += '_';
+    }
+    disWord = lettersNum;
+    return lettersNum;
+}
+function displayWord(data) {
     const word = document.getElementById('word');
     word.innerHTML = '';
-
-    for(let i = 0; i < lettersNum; i++) {
-        let h2 = document.createElement("h2");
-        h2.innerHTML = '_';
-        word.appendChild(h2);
-    }
+    let h2 = document.createElement("h2");
+    h2.innerHTML = data.split('').join(' ');
+    word.appendChild(h2);
 }
 
 async function getWord(url) {
@@ -33,8 +44,8 @@ async function getWord(url) {
     let data = await response.json();
     let word = data[0].toUpperCase();
     currWord = word;
-    console.log(currWord);
-    makeWord(word);
+    console.log(word);
+    displayWord(makeWord(word));
 }
 
 window.addEventListener('DOMContentLoaded', (event) => {
@@ -48,7 +59,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
            const alphButtons = document.querySelectorAll('#alph-btn');
 
             for(button of alphButtons) {
-                button.style.color = '#747474';
+                button.style = '';
             }
             getWord(url)
         });
@@ -67,6 +78,15 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         if(currWord.includes(char) && color !==  'rgb(255, 228, 0)' && genWord === true) {
                 console.log("TRUEEEEEE");
+                
+                for(let i = 0; i < currWord.length; i++) {
+                    if(currWord[i] === char) {
+                        console.log("aaaaa");
+                        disWord = disWord.substring(0, i) + char + disWord.substring(i + 1);
+                    }
+                }
+                console.log(disWord);
+                displayWord(disWord);        
         }
     })
 
