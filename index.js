@@ -70,7 +70,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
     if(resetBtn) {
         resetBtn.addEventListener('click', function() {
             genWord = true;
-           const alphButtons = document.querySelectorAll('#alph-btn');
+            const alphButtons = document.querySelectorAll('#alph-btn');
+            hangCounter = -1;
+            document.getElementById("hangman-img").src = '';
 
             for(button of alphButtons) {
                 button.style = '';
@@ -101,6 +103,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 }
                 console.log(disWord);
                 displayWord(disWord);        
+        }
+
+        if(!currWord.includes(char) && color !==  'rgb(255, 228, 0)' && genWord === true) {
+            hangCounter++;
+            document.getElementById("hangman-img").src = './img/' + images[hangCounter];
         }
     })
 })
