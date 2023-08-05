@@ -74,6 +74,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             hangCounter = -1;
             document.getElementById("hangman-img").src = '';
             overlay.style.display = "none";
+            resetBtn.style.backgroundColor = '#747474';
 
             for(button of alphButtons) {
                 button.style = '';
@@ -115,7 +116,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             document.getElementById("word").innerHTML = "";
         }
 
-        if(!disWord.includes('_')) {
+        if(!disWord.includes('_') && genWord === true) {
             overlay.style.display = "block";
             resetBtn.style.backgroundColor = '#14A76C';
             document.getElementById("overlay-text").innerHTML = "YOU WIN!";
