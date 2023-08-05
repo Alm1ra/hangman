@@ -78,6 +78,14 @@ h1 {
     background-color: #282828;
     border: 2.5px solid;
     border-color: #FF652F;
+    overflow: hidden;
+    justify-content: center;
+    text-align: center;
+}
+
+#hangman img {
+    margin: 2.4rem;
+    height: 25em;
 }
 
 #word {

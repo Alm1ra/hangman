@@ -1,6 +1,20 @@
 const url = 'https://random-word-api.herokuapp.com/word?lang=en';
+const images = [
+    'hangman_0.png',
+    'hangman_1.png',
+    'hangman_2.png',
+    'hangman_3.png',
+    'hangman_4.png',
+    'hangman_5.png',
+    'hangman_6.png',
+    'hangman_7.png',
+    'hangman_8.png',
+    'hangman_9.png'
+]
 let currWord = '';
 let disWord = '';
+let hangCounter = -1;
+
 window.onload = function() {
     letterGrid();
 }
@@ -89,8 +103,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 displayWord(disWord);        
         }
     })
-
-
 })
 
 
