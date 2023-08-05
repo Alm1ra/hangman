@@ -73,6 +73,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             const alphButtons = document.querySelectorAll('#alph-btn');
             hangCounter = -1;
             document.getElementById("hangman-img").src = '';
+            overlay.style.display = "none";
 
             for(button of alphButtons) {
                 button.style = '';
@@ -93,21 +94,32 @@ window.addEventListener('DOMContentLoaded', (event) => {
         }
 
         if(currWord.includes(char) && color !==  'rgb(255, 228, 0)' && genWord === true) {
-                console.log("TRUEEEEEE");
                 
                 for(let i = 0; i < currWord.length; i++) {
                     if(currWord[i] === char) {
-                        console.log("aaaaa");
                         disWord = disWord.substring(0, i) + char + disWord.substring(i + 1);
                     }
                 }
-                console.log(disWord);
                 displayWord(disWord);        
         }
 
         if(!currWord.includes(char) && color !==  'rgb(255, 228, 0)' && genWord === true) {
             hangCounter++;
             document.getElementById("hangman-img").src = './img/' + images[hangCounter];
+        }
+
+        if(hangCounter >= 9) {
+            overlay.style.display = "block";
+            resetBtn.style.backgroundColor = '#14A76C';
+            document.getElementById("overlay-text").innerHTML = "GAME OVER";
+            document.getElementById("word").innerHTML = "";
+        }
+
+        if(!disWord.includes('_')) {
+            overlay.style.display = "block";
+            resetBtn.style.backgroundColor = '#14A76C';
+            document.getElementById("overlay-text").innerHTML = "YOU WIN!";
+            document.getElementById("word").innerHTML = "";
         }
     })
 })
